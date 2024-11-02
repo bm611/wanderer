@@ -84,9 +84,9 @@ def display_box(data: str):
     return rx.box(
         rx.text(
             data,
-            class_name="text-md font-light text-center",
+            class_name="text-sm font-light",
         ),
-        class_name="rounded-full bg-slate-200 px-6 py-1",
+        class_name="rounded-lg bg-white shadow-xl hover:shadow-md transition-all duration-200 px-4 py-2",
     )
 
 
@@ -97,16 +97,16 @@ def transport_box(transport_data: list):
             rx.hstack(
                 rx.match(
                     transport_data[0],
-                    ("Rideshare", rx.icon("car-taxi-front")),
-                    ("Public Transit", rx.icon("train-front")),
-                    ("Car Rental", rx.icon("car")),
-                    ("Airport Code", rx.icon("plane")),
+                    ("Rideshare", rx.icon("car-taxi-front", color="#2196F3")),
+                    ("Public Transit", rx.icon("train-front", color="#4CAF50")),
+                    ("Car Rental", rx.icon("car", color="#FF9800")),
+                    ("Airport Code", rx.icon("plane", color="#9C27B0")),
                 ),
                 rx.text(
                     transport_data[0],
-                    class_name="text-sm text-gray-600 font-medium",
+                    class_name="text-lg text-gray-800 font-semibold",
                 ),
-                class_name="flex items-center justify-center",
+                class_name="flex items-center justify-center space-x-2 bg-white p-3 rounded-t-xl",
             ),
             rx.vstack(
                 rx.grid(
@@ -115,16 +115,16 @@ def transport_box(transport_data: list):
                         display_box,
                     ),
                     columns="2",
-                    spacing="2",
+                    spacing="3",
                     flow="row",
                 ),
                 align_items="start",
-                class_name="p-2",
+                class_name="p-4",
             ),
-            class_name="p-2",
+            class_name="",
         ),
-        background_color="#e3f2fd",
-        class_name="rounded-xl border border-gray-100",
+        background_color="white",
+        class_name="rounded-xl border border-gray-200 shadow-lg hover:shadow-xl transition-all duration-200",
     )
 
 
@@ -137,10 +137,10 @@ def transport_section():
                 transport_box,
             ),
             columns="2",
-            spacing="2",
+            spacing="4",
             class_name="w-full",
         ),
-        class_name="mt-2 p-4 bg-gray-100 rounded-3xl",
+        class_name="mt-2 p-6 bg-gray-100 rounded-3xl",
     )
 
 

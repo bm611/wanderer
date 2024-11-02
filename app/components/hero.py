@@ -11,7 +11,7 @@ def hero_section() -> rx.Component:
             ),
             rx.text(
                 "Your AI Trip Planner. Get personalized travel recommendations, local insights, and essential information for your next adventure.",
-                class_name="text-slate-600 text-xl md:text-2xl mx-10",
+                class_name="text-slate-600 text-xl md:text-2xl mx-10 mb-10",
             ),
             rx.hstack(
                 rx.input(
@@ -25,8 +25,12 @@ def hero_section() -> rx.Component:
                     class_name="rounded-full bg-gray-700 hover:bg-black absolute right-8 top-1/2 transform -translate-y-1/2",
                     size="4",
                     type="submit",
-                    on_click=[State.generate_city_guide, State.start_generation],
+                    on_click=[
+                        State.start_generation,
+                        State.generate_city_guide,
+                    ],
                     loading=State.is_loading,
+                    disabled=State.is_loading,
                 ),
                 class_name="w-full max-w-[800px] relative flex items-center px-4",
             ),

@@ -156,7 +156,6 @@ def generate_trip_image(user_prompt):
 class State(rx.State):
     city_input: str = ""
     is_loading: bool = False
-    is_generating: bool = False
     img_url: str | None = ""
     trip_data: dict = {}
     weather_quarterly: Dict[str, str] = {}
@@ -171,6 +170,10 @@ class State(rx.State):
     def handle_city_change(self, value: str):
         """Handle changes to the city input field."""
         self.city_input = value
+
+    def reset_vars(self):
+        self.city_input = ""
+        self.is_loading = False
 
     def start_generation(self):
         self.is_loading = True
@@ -213,3 +216,5 @@ class State(rx.State):
         except Exception as e:
             # Handle any errors
             print(f"Error generating city guide: {str(e)}")
+
+        return rx.redirect("/trip")

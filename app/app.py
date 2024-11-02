@@ -4,16 +4,28 @@ from .components import trip
 from app.state import State
 
 
-@rx.page(route="/", title="TBD")
+@rx.page(route="/", title="Wanderer")
 def index() -> rx.Component:
     return rx.container(
         rx.color_mode.button(position="top-right"),
         hero.hero_section(),
-        rx.cond(
-            State.is_loading,
-            trip.trip_section(),
-            rx.text(),
+        class_name="w-full",
+        size="4",
+    )
+
+
+@rx.page(route="/trip", title="Trip Details")
+def trip_page() -> rx.Component:
+    return rx.container(
+        rx.link(
+            rx.heading(
+                "Wanderer",
+                class_name="text-5xl md:text-7xl text-slate-600 font-extrabold text-center mt-20",
+            ),
+            href="/",
+            on_click=lambda: State.reset_vars,
         ),
+        trip.trip_section(),
         class_name="w-full",
         size="4",
     )
