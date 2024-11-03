@@ -163,6 +163,14 @@ class State(rx.State):
     best_visit: List = []
     formatted_best_visit: str = ""
 
+    class Hotel(TypedDict):
+        name: str
+        category: str
+        area: str
+        price_range: str
+
+    hotels: List[Hotel] = []
+
     # things to do
     things_to_do: List = []
     hidden_gems: List = []
@@ -203,6 +211,7 @@ class State(rx.State):
             self.formatted_best_visit = " | ".join(self.best_visit)
             self.things_to_do = new_data["top_attractions"]
             self.hidden_gems = new_data["hidden_gems"]
+            self.hotels = new_data["recommended_hotels"]
 
             # Generate new image for the city
             self.img_url = generate_trip_image(

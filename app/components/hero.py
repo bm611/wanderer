@@ -14,6 +14,19 @@ def hero_section() -> rx.Component:
                 class_name="text-slate-600 text-xl md:text-2xl mx-10 mb-10",
             ),
             rx.hstack(
+                *[
+                    rx.button(
+                        city,
+                        size="4",
+                        class_name="bg-gray-100 hover:bg-gray-200 text-slate-600 rounded-full px-6 py-1 text-lg",
+                        on_click=State.handle_city_change(city),
+                    )
+                    for city in ["Tokyo", "Paris", "New York", "Dubai", "Sydney"]
+                ],
+                spacing="3",
+                class_name="mx-10",
+            ),
+            rx.hstack(
                 rx.input(
                     placeholder="Enter a City name",
                     class_name="w-full h-20 md:h-28 px-10 pr-8 md:pr-16 rounded-full text-slate-600 text-xl md:text-3xl bg-transparent",
